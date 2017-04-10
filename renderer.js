@@ -36,16 +36,16 @@ function render(curr, next, delta){
   let currT = 0;
   if(delta <= curr.sum ){
     currT = (curr.sum - delta).tt();
-    document.body.className ='';
+    next_el.className ='';
   }  else {
     currT = '+' + (delta - curr.sum).tt();
-    document.body.className = 'overflow';
+    next_el.className = 'overflow';
   }
 
   if(next)
     next_el.innerHTML = next.label + "<span>" + currT +"</span>";
   else
-    next_el.innerHTML = "";
+    next_el.innerHTML = "FIN";
 }
 
 setInterval( ()=> {
