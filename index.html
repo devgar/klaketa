@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      body{ margin:0; padding: 8px; user-select:none;}
+      h1, h2, h3, h4 ,h5 , p{ margin:0; font-size:20px; cursor:default;}
+      #current{ font-size:30px;}
+      #next{ }
+      #current span, #next span{ float:right}
+      #over{
+        position:absolute; background:rgba(0, 0, 0, 0.3);
+        top:8px; left:8px; right:8px; bottom:8px; opacity:0;
+      }
+      #over:hover{
+        opacity:1;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="current">Cabecera <span>0:04</span></p>
+    <p id="next">Presentación <span> -13:04</span></p>
+    <div id="over"></div>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "klaketa",
+  "version": "0.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "node_modules/.bin/electron ."
+  },
+  "repository": "devgar/klaketa",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Edgar Albalate <dev.gardo@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
