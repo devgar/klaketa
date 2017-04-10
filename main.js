@@ -12,11 +12,11 @@ function createWindow () {
   const WIDTH = DISPLAY.workAreaSize.width;
   const HEIGHT = DISPLAY.workAreaSize.height;
 
-  appWidth = 300;
+  appWidth = 360;
   mainWindow = new BrowserWindow({
-    width: appWidth, height: 80,
+    width: appWidth, height: 80, resizable: false,
     frame: false, alwaysOnTop: true,
-    skipTaskbar: true, backgroundColor: '#77FFFFFF',
+    skipTaskbar: true, 
     type: 'notification'
   })
 

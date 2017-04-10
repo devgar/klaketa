@@ -6,22 +6,50 @@
 const t0 = new Date();
 
 let position = 0;
+const current_el = document.getElementById('current');
+const next_el = document.getElementById('next');
+
+const btnNext = document.getElementById('nextBtn');
+const btnPrev = document.getElementById('prevBtn');
+const btnPause = document.getElementById('pauseBtn');
+
+btnPause.onclick = function(){ console.log('Hello Pause')};
+btnNext.onclick = function(){
+  if(position+1 < ESCALETA.length) position += 1;
+}
+btnPrev.onclick = function(){
+  if(position > 0 ) position -= 1;
+}
+
+Number.prototype.tt = function(){
+  let sign = '';
+  if(this < 0) sign = '-';
+  let secs = Math.floor(Math.abs(this % 60)).toString();
+  if(secs.length < 2) secs = '0' + secs;
+  let mins = Math.floor(Math.abs(this / 60)).toString();
+  if(mins.length < 2) mins = '0' + mins;
+  return sign + mins + ':' + secs;
+}
 
 function render(curr, next, delta){
-  const current_el = document.getElementById('current');
-  const next_el = document.getElementById('next');
-  console.log('RENDER', curr, next, delta);
-  let currT = delta - curr.sum + curr-d
-  let currStr = Math.floor(delta / 60) + ':' + Math.floor(delta % 60)
-  current_el.innerHTML=curr.label + "<span>" + (delta - curr.sum).toFixed() +"</span>";
-  next_el.innerHTML=next.label + "<span>" + (delta - next.sum).toFixed() +"</span>";
+  current_el.innerHTML=curr.label + "<span>" + delta.tt() +"</span>";
+  let currT = 0;
+  if(delta <= curr.sum ){
+    currT = (curr.sum - delta).tt();
+    document.body.className ='';
+  }  else {
+    currT = '+' + (delta - curr.sum).tt();
+    document.body.className = 'overflow';
+  }
+
+  if(next)
+    next_el.innerHTML = next.label + "<span>" + currT +"</span>";
+  else
+    next_el.innerHTML = "";
 }
 
 setInterval( ()=> {
-  const delta = ( (new Date()) - t0) / 1000;
-  let hrs = Math.floor(delta / 3600)
-  let min = Math.floor(delta / 60)
-  let sec = Math.floor(delta % 60)
+  const delta = Math.floor( ( (new Date()) - t0) / 1000 );
 
   let current, next;
 
@@ -36,11 +64,23 @@ setInterval( ()=> {
     }
   }
   render(current, next, delta);
-}, 800);
+}, 100);
+
+function initialize(escaleta){
+  for(let i=0, sum=0, l=escaleta.length; i<l; i++ ){
+    sum += escaleta[i].d;
+    escaleta[i].sum = sum;
+  }
+  return escaleta;
+}
 
 const ESCALETA = [
-  {label: 'Cabecera', d: 20, sum: 20},
-  {label: 'Presentación', d: 60, sum: 80},
-  {label: 'Sin. Actualidad', d: 30, sum: 110},
-  {label: 'Debate Actualidad', d: 780, sum: 890}
+  {label: 'Cabecera', d: 20},
+  {label: 'Presentación', d: 15},
+  {label: 'Sin. Actualidad', d: 30},
+  {label: 'Debate Actualidad', d: 780}
 ];
+
+
+
+initialize(ESCALETA);

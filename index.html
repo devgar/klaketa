@@ -3,25 +3,51 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css"
+      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
     <style>
-      body{ margin:0; padding: 8px; user-select:none;}
-      h1, h2, h3, h4 ,h5 , p{ margin:0; font-size:20px; cursor:default;}
+      body{ 
+        margin:0; padding: 8px; user-select:none; 
+        background:rgba(210, 210, 210, 1);
+      }
+      p{ 
+        margin:0; font-size:20px; cursor:default; position:relative;
+      }
+      p span {
+        position:absolute; top:0; right:0; background:rgba(210, 210, 210, 0.7);
+      }
+      .overflow span{ color: #600;}
       #current{ font-size:30px;}
-      #next{ }
       #current span, #next span{ float:right}
       #over{
-        position:absolute; background:rgba(0, 0, 0, 0.3);
+        position:absolute; background:rgba(210, 210, 210, 0.7);
         top:8px; left:8px; right:8px; bottom:8px; opacity:0;
+        transition: 0.2s;
       }
-      #over:hover{
-        opacity:1;
+      #over:hover{ opacity:1; }
+      #over button{
+        position:absolute; top:0; bottom:0; font-size: 40px; color:#666;
+        text-align:center; vertical-align: middle; padding-top:10px;
+        cursor:pointer; padding:0; margin:0; border:0;
+        outline:none; background:rgba(255, 255, 255, 0);
       }
+      #over button:hover{ color:#333; }
+      
+      #over button:active{ color:#000; background:rgba(255, 255, 255, 0.3); }
+      #over #prevBtn{ left: 0; width: 35%; }
+      #over #pauseBtn{ left: 35%; width: 30%; }
+      #over #nextBtn{ left: 65%; width: 35%; }
     </style>
   </head>
   <body>
-    <p id="current">Cabecera <span>0:04</span></p>
-    <p id="next">Presentación <span> -13:04</span></p>
-    <div id="over"></div>
+    <p id="current"></p>
+    <p id="next"></p>
+    <div id="over">
+      <button id="prevBtn"><i class="icon ion-chevron-left"></i></button>
+      <button id="pauseBtn"><i class="icon ion-pause"></i></button>
+      <button id="nextBtn"><i class="icon ion-chevron-right"></i></button>
+    </div>
   </body>
 
   <script>
