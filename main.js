@@ -5,8 +5,6 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
-console.log('ARGUMENTS:\n\n', process.argv, '\n\n\n\n')
-
 let mainWindow
 
 function createWindow () {
