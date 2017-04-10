@@ -7,17 +7,18 @@
       href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
     <style>
-      body{ 
-        margin:0; padding: 8px; user-select:none; 
+      body{
+        margin:0; padding: 8px; user-select:none;
         background:rgba(210, 210, 210, 1);
       }
-      p{ 
+      p{
         margin:0; font-size:20px; cursor:default; position:relative;
       }
       p span {
         position:absolute; top:0; right:0; background:rgba(210, 210, 210, 0.7);
       }
-      #next{ color: #666;}
+      #current{ text-shadow: 1px 1px #bbb;}
+      #next{ color: #666; text-shadow: 1px 1px #ccc; }
       .overflow span{ color: #600;}
       #current{ font-size:30px;}
       #current span, #next span{ float:right}
@@ -34,7 +35,7 @@
         outline:none; background:rgba(255, 255, 255, 0);
       }
       #over button:hover{ color:#333; }
-      
+
       #over button:active{ color:#000; background:rgba(255, 255, 255, 0.3); }
       #over #prevBtn{ left: 0; width: 35%; }
       #over #pauseBtn{ left: 35%; width: 30%; }
