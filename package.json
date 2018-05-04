@@ -12,7 +12,8 @@
   ],
   "author": "Edgar Albalate <dev.gardo@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "electron": "^1.8.4"
+  "devDependencies": {},
+  "dependencies": {
+    "electron": "^2.0.0"
   }
 }
