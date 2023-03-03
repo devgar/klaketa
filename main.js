@@ -1,6 +1,5 @@
 const electron = require('electron')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const { app, BrowserWindow } = electron
 
 const path = require('path')
 const url = require('url')
@@ -27,8 +26,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  if(process.argv.indexOf('-d')>=0)
-    mainWindow.openDevTools();
+
+  if(process.argv.includes('-d'))
+    mainWindow.openDevTools({ mode: 'detach' })
 
   mainWindow.on('closed', function () {
     mainWindow = null
